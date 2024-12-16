@@ -3,7 +3,7 @@
     <div class="footer">
       Made by
       <a
-        href="https://github.com/shaswata56"
+        href="https://shaswata.me"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -11,7 +11,7 @@
       </a>
       with Nuxt 3 and
       <img
-        src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png"
+        src="@/assets/images/RedHeart.png"
         alt="Red Heart"
         width="23"
         height="23"
