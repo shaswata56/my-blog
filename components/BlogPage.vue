@@ -2,12 +2,11 @@
   <section class="blog-posts" id="blog-posts">
     <h2 class="text-2xl font-bold name">Blog Posts</h2>
     <div class="post-list">
-      <!-- Render only paginated posts -->
-      <div v-for="post in paginatedPosts" :key="post._path" class="post-item">
+      <div v-for="post in posts" :key="post._path" class="post-item">
         <div class="post-header">
           <div class="left">
             <h3 class="title">
-              <NuxtLink :to="post._path">{{ post.title }}</NuxtLink>
+              <NuxtLink :to="`/posts${post._path}`">{{ post.title }}</NuxtLink>
             </h3>
           </div>
           <div class="right">
@@ -18,8 +17,7 @@
       </div>
     </div>
 
-    <!-- Pagination -->
-    <div class="pagination">
+    <div class="pagination" v-if="totalPages > 1">
       <button v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }" @click="goToPage(page)">
         <b>{{ page }}</b>
       </button>
@@ -27,57 +25,54 @@
   </section>
 </template>
 
-
 <script setup>
-import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 
-// Props for posts
-const props = defineProps(['posts']);
-const posts = ref(props.posts);
-
-// Pagination setup
-const postsPerPage = 5; // Number of posts per page
-const currentPage = ref(1);
-
-const totalPages = computed(() => Math.ceil(posts.value.length / postsPerPage));
-
-const paginatedPosts = computed(() => {
-  const start = (currentPage.value - 1) * postsPerPage;
-  const end = start + postsPerPage;
-  return posts.value.slice(start, end);
+const props = defineProps({
+  posts: {
+    type: Array,
+    default: () => []
+  },
+  currentPage: {
+    type: Number,
+    default: 1
+  },
+  totalPages: {
+    type: Number,
+    default: 0
+  }
 });
 
+const router = useRouter();
+
 const goToPage = (page) => {
-  if (page >= 1 && page <= totalPages.value) {
-    currentPage.value = page;
-  }
+  const path = page === 1 ? '/' : `/${page}`;
+  router.push(path);
 };
 
-// Formatting date
 const formatDate = (date) => {
   const options = { year: 'numeric', month: 'short', day: '2-digit' };
   return new Date(date).toLocaleDateString('en-US', options);
 };
 
-// Extracting excerpt
 const getExcerpt = (body) => {
   if (!body || !Array.isArray(body.children)) return '';
 
   const paragraphs = body.children
-    .filter((node) => node.tag === 'p') // Only include paragraphs
+    .filter((node) => node.tag === 'p')
     .map((node) =>
       node.children
-        .filter((child) => child.type === 'text') // Extract text nodes
+        .filter((child) => child.type === 'text')
         .map((child) => child.value)
         .join(' ')
     )
     .join(' ');
 
   const excerpt = paragraphs.length > 300 ? paragraphs.substring(0, 300) + '...' : paragraphs;
-
   return excerpt;
 };
 </script>
+
 
 <style scoped>
 h3 {
