@@ -36,6 +36,14 @@ const { data: postsRef } = await useAsyncData(() =>
     queryContent('/').sort({ date: -1 }).find()
 );
 
+useHead({
+    title: 'Blog Archive',
+    meta: [
+        { name: 'description', content: 'Archive of blog posts by Shaswata Das' },
+        { name: 'author', content: 'Shaswata Das' }
+    ]
+});
+
 // Safely extract the value from the ref
 const posts = computed(() => postsRef.value || []);
 

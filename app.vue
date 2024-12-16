@@ -13,13 +13,13 @@
 
 <script setup lang="ts">
 useHead({
-  title: "Shaswata Das",
+  title: "Shaswata's Blog",
   meta: [
     { name: "viewport", content: "width=device-width, initial-scale=1.0" },
     {
       name: "description",
       content:
-        "Portfolio of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax Bangladesh Limited, sister concern of Orbitax LLC. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
+        "Blog of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
     },
   ],
   htmlAttrs: {
@@ -34,19 +34,19 @@ useHead({
   ],
 });
 useSeoMeta({
-  title: "Shaswata Das",
-  ogTitle: "Shaswata Das",
+  title: "Shaswata's Blog",
+  ogTitle: "Shaswata's Blog",
   description:
-    "Portfolio of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax Bangladesh Limited, sister concern of Orbitax LLC. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
+    "Blog of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
   ogDescription:
-    "Portfolio of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax Bangladesh Limited, sister concern of Orbitax LLC. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
-  ogImage: "https://shaswata56.github.io/assets/profile_picture.DNMGGUvM.jpg",
-  ogUrl: "shaswata56.github.io",
+    "Blog of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
+  ogImage: "https://shaswata.me/assets/profile_picture.DNMGGUvM.jpg",
+  ogUrl: "blog.shaswata.me",
   twitterCard: "summary_large_image",
-  twitterTitle: "Shaswata Das",
-  twitterDescription: "Portfolio of Shaswata Das",
+  twitterTitle: "Shaswata's Blog'",
+  twitterDescription: "Blog of Shaswata Das",
   twitterImage:
-    "https://shaswata56.github.io/assets/profile_picture.DNMGGUvM.jpg",
+    "https://blog.shaswata.me/assets/profile_picture.DNMGGUvM.jpg",
 });
 </script>
 
@@ -308,7 +308,6 @@ header {
     max-width: 320px;
   }
 }
-
 
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);

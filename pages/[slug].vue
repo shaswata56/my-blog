@@ -9,6 +9,13 @@ const { params } = useRoute();
 const { data: post } = await useAsyncData(() =>
     queryContent(`/${params.slug}`).findOne()
 );
+
+useHead({
+    title: post.value.title,
+    meta: [
+        { name: 'author', content: 'Shaswata Das' }
+    ]
+});
 </script>
 
 <style scoped>
