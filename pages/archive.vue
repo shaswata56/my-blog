@@ -6,7 +6,7 @@
             <h3 class="text-2xl font-semibold">{{ year }}</h3>
             <ul>
                 <li v-for="post in posts" :key="post._path">
-                    <NuxtLink :to="post._path">
+                    <NuxtLink :to="`/posts${post._path}`">
                         {{ formatDate(post.date) }} - {{ post.title }}
                     </NuxtLink>
                 </li>
