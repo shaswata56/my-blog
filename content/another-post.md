@@ -1,5 +1,5 @@
 ---
-title: "The Ultimate Guide to Nuxt Content"
+title: "The Ultimate Guide to Nuxt Content to Handle Markdown"
 date: "2024-12-15"
 published: true
 ---

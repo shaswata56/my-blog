@@ -172,17 +172,17 @@ h3 {
 .main-content {
   flex: 1;
   position: relative;
+  max-width: 100%;
 }
 
 header {
   margin-bottom: 2rem;
-  margin: 0 auto;
   padding-bottom: 2rem;
 }
 
-.rendered {
-  max-width: 900px;
-  margin: 0 auto;
+.rendered * {
+  justify-content: center;
+  max-width: 100%;
 }
 
 .rendered *,
@@ -195,12 +195,13 @@ header {
   max-width: 500px;
   max-height: 600px;
   padding: 1rem 0 1rem 0;
+  justify-self: center;
 }
 
 .rendered strong {
   font-family: "ui-sans-serif", system-ui, sans-serif, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .rendered h1 {
@@ -226,6 +227,10 @@ header {
 .rendered p {
   font-size: 1.2rem;
   margin-bottom: 1.2rem;
+}
+
+.rendered p * {
+  justify-content: center;
 }
 
 .rendered h1,
@@ -254,7 +259,24 @@ header {
   padding: 0 0 0 1.2rem;
 }
 
-.rendered pre {
+.rendered p code,
+.rendered li code {
+  color: var(--link-color-hover);
+}
+
+.rendered pre code {
+  max-width: 100%;
+  text-wrap: auto;
+  text-wrap-mode: wrap;
+  padding: 2rem 0 2rem 0;
+}
+
+.rendered .shiki code {
+  text-wrap: nowrap;
+  color: unset;
+}
+
+.rendered .shiki {
   padding: 1rem;
   border-radius: 8px;
   overflow-x: auto;
@@ -284,7 +306,6 @@ header {
 
   .rendered img {
     max-width: 320px;
-    align-items: center;
   }
 }
 
