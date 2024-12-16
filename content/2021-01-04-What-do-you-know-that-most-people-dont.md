@@ -10,7 +10,7 @@ Look at the famous picture below.
 
 You might have heard of it.
 
-![The Falling Man](http://dujye7n3e5wjl.cloudfront.net/photographs/640-tall/time-100-influential-photos-richard-drew-falling-man-92.jpg)
+![The Falling Man](https://i.imgur.com/AC7dhuH.jpeg)
 
 **It’s called The Falling Man.**
 
