@@ -2,7 +2,7 @@
     <header>
         <h2 class="text-3xl font-bold name">Shaswata's Blog</h2>
         <div class="mini-content">
-        <p class="text-base">Things came to my mind, which I can write here.</p>
+        <p class="text-base">Things came to my mind, which I write here (sometimes).</p>
       </div>
       <div class="social-links">
         <NuxtLink
