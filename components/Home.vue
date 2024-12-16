@@ -1,19 +1,12 @@
 <template>
-  <div class="home">
-    <Theme />
-    <div class="content-wrapper">
-      <div class="main-content">
-        <ProfileHeader />
-        <AboutSection />
-        <ProjectsSection />
-        <TechnologiesSection />
-        <ExperienceSection />
-        <EducationSection />
-        <HobbiesSection />
-        <FooterSection />
-      </div>
-    </div>
-  </div>
+  <ProfileHeader />
+  <AboutSection />
+  <ProjectsSection />
+  <TechnologiesSection />
+  <ExperienceSection />
+  <EducationSection />
+  <HobbiesSection />
+  <FooterSection />
 </template>
 
 <script>
@@ -44,41 +37,5 @@ export default {
 </script>
 
 <style scoped>
-.home {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 5rem;
-}
-
-.content-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.main-content {
-  flex: 1;
-  position: relative;
-}
-
-header {
-  margin-bottom: 2rem;
-}
-
-@media (max-width: 768px) {
-  .home {
-    padding: 4rem 1.5rem;
-  }
-
-  .content-wrapper {
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 0 5%;
-  }
-
-  header {
-    margin-bottom: 1rem;
-  }
-}
+/* Add necessary styles here */
 </style>

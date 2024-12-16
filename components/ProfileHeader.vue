@@ -27,6 +27,12 @@
           <font-awesome-icon icon="fa-brands fa-linkedin" title="LinkedIn"/>
         </a>
         <a
+          href="/blog"
+          class="social-link"
+        >
+        <font-awesome-icon icon="fa-solid fa-blog" title="Blog"/>
+        </a>
+        <a
           href="mailto:shaswata56@gmail.com"
           target="_blank"
           rel="noopener noreferrer"

@@ -1,7 +1,7 @@
 ---
 title: "My First Blog Post"
-description: "An introduction to my new blog."
 date: "2024-12-14"
+published: true
 ---
 
 # Welcome!

@@ -29,5 +29,15 @@ export default defineNuxtConfig({
   experimental: {
     payloadExtraction: false
   },
-  modules: ['@nuxt/content']
+  modules: ['@nuxt/content'],
+  content: {
+    highlight: {
+      theme: {
+        default: 'github-dark'
+      },
+    },
+    markdown: {
+      anchorLinks: false
+    }
+  }
 })
