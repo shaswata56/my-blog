@@ -9,13 +9,13 @@
           to="/"
           class="social-link"
         >
-          <font-awesome-icon icon="fa-solid fa-home" title="Home"/>
+          <font-awesome-icon icon="fa-solid fa-home" title="Home" titleId="home-icon-title"/>
         </NuxtLink>
         <NuxtLink
           to="/archive"
           class="social-link"
         >
-          <font-awesome-icon icon="fa-solid fa-box-archive" title="Archive"/>
+          <font-awesome-icon icon="fa-solid fa-box-archive" title="Archive" titleId="archive-icon-title"/>
         </NuxtLink>
       </div>
     </header>
