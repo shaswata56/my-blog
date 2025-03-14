@@ -1,5 +1,5 @@
 ---
-title: "Beyond Knowledge: Nurturing Critical Thought in a Conformist World"
+title: "Beyond Knowledge: Nurturing Critical Thinking in a Conformist World"
 date: 2025-03-15
 published: true
 ---
