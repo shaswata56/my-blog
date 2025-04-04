@@ -18,7 +18,7 @@ You might wonder why he is jumping to his death?
 
 What you can’t see is the fire.
 
-That building in the background, it’s the world trade center. The date: September 11th, 2001.
+That building in the background, it’s the world trade center. The event happened on September 11th, 2001.
 
 When we can see the fire, we understand why he is jumping to his death. He does not want to jump any more than you and I. His fear of death is no less.
 

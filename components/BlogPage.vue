@@ -6,14 +6,16 @@
         <div class="post-header">
           <div class="left">
             <h3 class="title">
-              <NuxtLink :to="`/posts${post._path}`">{{ post.title }}</NuxtLink>
+              <NuxtLink :to="`/posts${post.path}`">{{ post.title }}</NuxtLink>
             </h3>
           </div>
           <div class="right">
             <p class="timeframe">{{ formatDate(post.date) }}</p>
           </div>
         </div>
-        <p class="description">{{ getExcerpt(post.body) }}</p>
+        <p class="description">
+          {{ getExcerpt(post.body) || 'No preview available.' }}
+        </p>
       </div>
     </div>
 
@@ -46,7 +48,7 @@ const props = defineProps({
 const router = useRouter();
 
 const goToPage = (page) => {
-  const path = page === 1 ? '/' : `/${page}`;
+  const path = page === 1 ? '/' : `/page/${page}`;
   router.push(path);
 };
 
@@ -56,19 +58,14 @@ const formatDate = (date) => {
 };
 
 const getExcerpt = (body) => {
-  if (!body || !Array.isArray(body.children)) return '';
+  if (!body || body.type !== 'minimal' || !Array.isArray(body.value)) return '';
 
-  const paragraphs = body.children
-    .filter((node) => node.tag === 'p')
-    .map((node) =>
-      node.children
-        .filter((child) => child.type === 'text')
-        .map((child) => child.value)
-        .join(' ')
-    )
+  const paragraphs = body.value
+    .filter((node) => node[0] === 'p' && typeof node[2] === 'string')
+    .map((node) => node[2])
     .join(' ');
 
-  const excerpt = paragraphs.length > 300 ? paragraphs.substring(0, 300) + '...' : paragraphs;
+  const excerpt = paragraphs.length > 300 ? paragraphs.slice(0, 300) + '...' : paragraphs;
   return excerpt;
 };
 </script>
