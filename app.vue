@@ -52,7 +52,7 @@ useSeoMeta({
 
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 @import url("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css");
 
 @import 'prismjs/themes/prism.css';
@@ -87,7 +87,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: "Fira Mono", Consolas, Liberation Mono, monospace;
+  font-family: "Merriweather", "SolaimanLipi", "NikoshBAN", serif;
+  font-style: normal;
   font-weight: 400;
   font-size: 12px;
   color: var(--text-color);
@@ -123,6 +124,14 @@ a:hover {
   text-decoration: none;
 }
 
+ul li a {
+  line-height: 1.5;
+  font-size: 15px;
+  font-family: "ui-sans-serif", "SolaimanLipi", "NikoshBAN", system-ui, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-weight: 500;
+}
+
 h1,
 h2,
 h3 {
@@ -141,10 +150,10 @@ h2 {
 
 p {
   color: var(--text-color);
-  line-height: 1.3;
+  line-height: 1.5;
   font-size: 14px;
   margin: 0 0 10px;
-  text-align: justify;
+  text-align: start;
 }
 
 section {
@@ -153,7 +162,7 @@ section {
 
 .name,
 h3 {
-  font-family: "ui-sans-serif", system-ui, sans-serif, Apple Color Emoji,
+  font-family: "ui-sans-serif", "SolaimanLipi", "NikoshBAN", system-ui, sans-serif, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
@@ -199,7 +208,7 @@ header {
 }
 
 .rendered strong {
-  font-family: "ui-sans-serif", system-ui, sans-serif, Apple Color Emoji,
+  font-family: "ui-sans-serif", "SolaimanLipi", "NikoshBAN", system-ui, sans-serif, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 1.3rem;
 }
@@ -225,7 +234,8 @@ header {
 }
 
 .rendered p {
-  font-size: 1.2rem;
+  line-height: 2;
+  font-size: 1.3rem;
   margin-bottom: 1.2rem;
 }
 
@@ -236,7 +246,7 @@ header {
 .rendered h1,
 .rendered h2,
 .rendered h3 {
-  font-family: "ui-sans-serif", system-ui, sans-serif, Apple Color Emoji,
+  font-family: "ui-sans-serif", "SolaimanLipi", "NikoshBAN", system-ui, sans-serif, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
@@ -302,6 +312,12 @@ header {
 
   pre {
     font-size: 0.85rem;
+  }
+
+  .rendered p {
+    line-height: 2;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
   }
 
   .rendered img {
