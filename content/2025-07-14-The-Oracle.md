@@ -4,7 +4,7 @@ date: 2025-07-14
 published: true
 ---
 
-The Oracles I have received so far:
+The Oracle I have received so far:
 
 * First, there was just awareness in its most primordial form.
 * In the physical realm, the energy-space continuum flows through pure awareness.
