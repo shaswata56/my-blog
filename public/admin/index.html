@@ -277,30 +277,47 @@
 
     // ── UI patches ───────────────────────────────────────────
     const AVATAR_URL = 'https://shaswata.me/assets/profile_picture.DNMGGUvM.jpg';
+    const patched = new Set();
 
     function patchUI() {
-      // replace avatar placeholder with real photo
-      const avatarIcon = document.querySelector('[aria-label="Account options dropdown"] svg');
-      if (avatarIcon && !document.getElementById('custom-avatar')) {
-        const img = document.createElement('img');
-        img.id = 'custom-avatar';
-        img.src = AVATAR_URL;
-        Object.assign(img.style, {
-          width: '28px', height: '28px', borderRadius: '50%',
-          objectFit: 'cover', border: '1px solid #4a4440', display: 'block'
-        });
-        avatarIcon.parentElement.replaceChild(img, avatarIcon);
+      // hide quick add — find by text content
+      document.querySelectorAll('#nc-root header [role="button"]').forEach(el => {
+        if (el.textContent.includes('Quick add') || el.textContent.includes('quick add')) {
+          const wrapper = el.closest('div') || el;
+          wrapper.style.setProperty('display', 'none', 'important');
+        }
+      });
+
+      // replace header avatar (only when logged in — header has account dropdown)
+      const avatarBtn = document.querySelector('[aria-label="Account options dropdown"]');
+      if (avatarBtn && !patched.has('avatar')) {
+        const svgWrapper = avatarBtn.querySelector('span > svg, span > span');
+        if (svgWrapper) {
+          const img = document.createElement('img');
+          img.src = AVATAR_URL;
+          Object.assign(img.style, {
+            width: '30px', height: '30px', borderRadius: '50%',
+            objectFit: 'cover', border: '1px solid #4a4440', display: 'block'
+          });
+          svgWrapper.parentElement.replaceChild(img, svgWrapper);
+          patched.add('avatar');
+        }
       }
 
-      // fix "NEW BLOG POSTS" button — center text, remove icon misalignment
+      // fix "NEW BLOG POSTS" button alignment
       document.querySelectorAll('#nc-root main > div:first-child a').forEach(btn => {
-        btn.style.cssText += 'display:inline-flex!important;align-items:center!important;justify-content:center!important;line-height:1!important;';
+        if (!patched.has(btn)) {
+          btn.style.setProperty('display', 'inline-flex', 'important');
+          btn.style.setProperty('align-items', 'center', 'important');
+          btn.style.setProperty('justify-content', 'center', 'important');
+          btn.style.setProperty('line-height', '1', 'important');
+          patched.add(btn);
+        }
       });
     }
 
-    // run after CMS renders, then periodically for route changes
-    setTimeout(patchUI, 1500);
-    setInterval(patchUI, 3000);
+    setTimeout(patchUI, 1200);
+    setInterval(patchUI, 2000);
 
     // ── autosave ──────────────────────────────────────────────
     const AUTOSAVE_PREFIX = 'cms_autosave:';
