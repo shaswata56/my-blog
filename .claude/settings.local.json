@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(node -e \"const pkg = require\\('./node_modules/@nuxt/content/package.json'\\); console.log\\(JSON.stringify\\(Object.keys\\(pkg.exports || {}\\), null, 2\\)\\)\")",
+      "Bash(node -e \"const pkg = require\\('./node_modules/@nuxt/content/package.json'\\); console.log\\(JSON.stringify\\(pkg.exports, null, 2\\)\\)\")",
+      "Bash(npm uninstall *)",
+      "Bash(curl -v http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3002/ -o /dev/null -w \"%{http_code}\")",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"nuxt dev\")",
+      "Bash(netstat -ano)",
+      "Bash(findstr \":3000\")",
+      "Bash(findstr \"LISTENING\")",
+      "Bash(taskkill /PID 43784 /F)",
+      "Bash(node -e \"console.log\\('syntax check'\\)\")",
+      "Bash(curl -s -o \"C:/Users/shaswata/my-blog/public/RedHeart.png\" \"https://blog.shaswata.me/assets/RedHeart.CSKz6yaY.png\")"
+    ]
+  }
+}

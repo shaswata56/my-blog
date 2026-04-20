@@ -1,19 +1,22 @@
 <template>
     <div>
-        <h2 class="text-2xl font-bold name">Blog Archive</h2>
+        <p class="section-label">Archive</p>
         <!-- Render paginated posts grouped by year -->
-        <div v-for="(posts, year) in paginatedGroupedPosts" :key="year" class="mb-8">
-            <h3 class="text-2xl font-semibold">{{ year }}</h3>
-            <ul>
-                <li v-for="post in posts" :key="post._id">
+        <div v-for="(posts, year) in paginatedGroupedPosts" :key="year" class="year-group">
+            <div class="year-row" v-for="(post, idx) in posts" :key="post._id">
+                <span class="year-marker" v-if="idx === 0">{{ year }}</span>
+                <span class="year-marker" v-else></span>
+                <div class="post-entry">
                     <NuxtLink v-if="post.path" :to="`/posts${post.path}`">
-                        {{ formatDate(post.date) }} - {{ post.title }}
+                        <span class="entry-date">{{ formatDate(post.date) }}</span>
+                        <span class="entry-title">{{ post.title }}</span>
                     </NuxtLink>
-                    <span v-else>
-                        {{ formatDate(post.date) }} - {{ post.title }}
+                    <span v-else class="entry-plain">
+                        <span class="entry-date">{{ formatDate(post.date) }}</span>
+                        <span class="entry-title">{{ post.title }}</span>
                     </span>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
 
         <!-- Pagination Controls -->
@@ -91,13 +94,79 @@ const formatDate = (date: string) => {
 </script>
 
 <style scoped>
-h3 {
-    margin-top: 1rem;
+.section-label {
+    font-size: 0.7rem;
+    font-family: "ui-sans-serif", system-ui, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-text-color);
+    margin-bottom: 0.75rem;
+    margin-top: 0;
 }
 
-ul {
-    list-style: inside;
-    padding: 0 0 0 3rem;
+.year-group {
+    margin-bottom: 0;
+}
+
+.year-row {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 0 1.5rem;
+    align-items: baseline;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.year-marker {
+    font-size: 0.65rem;
+    font-family: "ui-sans-serif", system-ui, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text-color);
+    opacity: 0.6;
+    padding-top: 0.85rem;
+    align-self: start;
+}
+
+.post-entry {
+    padding: 0.75rem 0;
+}
+
+.post-entry a,
+.entry-plain {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+}
+
+.entry-date {
+    font-size: 0.72rem;
+    font-family: "ui-sans-serif", system-ui, sans-serif;
+    color: var(--accent-text-color);
+    opacity: 0.7;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.entry-title {
+    font-family: "Merriweather", serif;
+    font-size: 0.92rem;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.post-entry a:hover .entry-title {
+    color: var(--link-color-hover);
+}
+
+@media (max-width: 600px) {
+    .year-row {
+        grid-template-columns: 2.5rem 1fr;
+        gap: 0 0.75rem;
+    }
+
+    .year-marker {
+        font-size: 0.6rem;
+    }
 }
 
 .pagination {
@@ -108,24 +177,25 @@ ul {
 }
 
 .pagination button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border: 1px solid var(--accent-color);
-    background-color: var(--accent-color);
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
     color: var(--accent-text-color);
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 3px;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.pagination button.active,
-.pagination button.active:hover {
-    background-color: transparent;
-    color: var(--accent-color);
+.pagination button.active {
+    color: var(--link-color-hover);
+    border-color: var(--link-color-hover);
     font-weight: bold;
 }
 
 .pagination button:hover {
-    background-color: var(--link-color-hover);
-    color: var(--accent-color);
+    color: var(--link-color-hover);
+    border-color: var(--link-color-hover);
+    background-color: transparent;
 }
 </style>

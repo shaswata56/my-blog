@@ -1,22 +1,20 @@
 <template>
   <section class="blog-posts" id="blog-posts">
-    <h2 class="text-2xl font-bold name">Blog Posts</h2>
+    <p class="section-label">Posts</p>
     <div class="post-list">
-      <div v-for="post in posts" :key="post._path" class="post-item">
-        <div class="post-header">
-          <div class="left">
-            <h3 class="title">
-              <NuxtLink :to="`/posts${post.path}`">{{ post.title }}</NuxtLink>
-            </h3>
-          </div>
-          <div class="right">
-            <p class="timeframe">{{ formatDate(post.date) }}</p>
-          </div>
-        </div>
+      <NuxtLink
+        v-for="post in posts"
+        :key="post._path"
+        :to="`/posts${post.path}`"
+        class="post-item"
+      >
+        <span class="margin-date">{{ formatDate(post.date) }}</span>
+        <h3 class="title">{{ post.title }}</h3>
+        <p class="timeframe">{{ formatDate(post.date) }} · {{ useReadingTime(post.body) }} min read</p>
         <p class="description">
-          {{ getExcerpt(post.body) || 'No preview available.' }}
+          {{ getExcerpt(post.body) || '' }}
         </p>
-      </div>
+      </NuxtLink>
     </div>
 
     <div class="pagination" v-if="totalPages > 1">
@@ -72,60 +70,89 @@ const getExcerpt = (body) => {
 
 
 <style scoped>
-h3 {
-  margin-bottom: 0.5rem;
-}
-
-p {
-  margin-bottom: 1rem;
-}
-
 .blog-posts {
   margin-bottom: 2rem;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-family: "ui-sans-serif", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-text-color);
+  margin-bottom: 0.75rem;
+  margin-top: 0;
 }
 
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0;
 }
 
 .post-item {
-  padding: 0.5rem 0;
+  display: block;
+  position: relative;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  color: inherit;
+  transition: background-color 0.15s ease;
+  border-radius: 2px;
 }
 
-.post-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.25rem;
-}
-
-.post-header .title,
-.post-header .timeframe {
+.margin-date {
+  display: none;
+  position: absolute;
+  right: calc(100% + 1.5rem);
+  top: 1.3rem;
+  font-size: 0.7rem;
+  font-family: "ui-sans-serif", system-ui, sans-serif;
   color: var(--accent-text-color);
-  font-family: "ui-sans-serif", system-ui, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  opacity: 0.6;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
 }
 
-.post-header .title {
+@media (min-width: 1100px) {
+  .margin-date {
+    display: block;
+  }
+  .timeframe {
+    display: none;
+  }
+}
+
+.post-item:hover {
+  color: inherit;
+}
+
+.post-item:hover .title {
   color: var(--link-color-hover);
 }
 
 .title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.2rem;
+  color: var(--text-color);
+  transition: color 0.2s ease;
+  line-height: 1.4;
 }
 
 .timeframe {
-  font-size: 1.25rem;
-  text-align: right;
+  font-size: 0.75rem;
+  font-family: "ui-sans-serif", system-ui, sans-serif;
+  color: var(--accent-text-color);
+  opacity: 0.75;
+  margin: 0 0 0.4rem;
 }
 
 .description {
-  line-height: 1.4;
-  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.6;
+  margin: 0;
 }
 
 .pagination {
@@ -136,24 +163,25 @@ p {
 }
 
 .pagination button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border: 1px solid var(--accent-color);
-  background-color: var(--accent-color);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
   color: var(--accent-text-color);
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 3px;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.pagination button.active,
-.pagination button.active:hover {
-  background-color: transparent;
-  color: var(--accent-color);
+.pagination button.active {
+  color: var(--link-color-hover);
+  border-color: var(--link-color-hover);
   font-weight: bold;
 }
 
 .pagination button:hover {
-  background-color: var(--link-color-hover);
-  color: var(--accent-color);
+  color: var(--link-color-hover);
+  border-color: var(--link-color-hover);
+  background-color: transparent;
 }
 </style>

@@ -2,10 +2,10 @@ export default defineNuxtConfig({
   ssr: true,
   app: {
     baseURL: '/',
-    buildAssetsDir: 'assets',
+    buildAssetsDir: 'nuxt-assets',
   },
   routeRules: {
-    '/': { prerender: true }
+    '/': { prerender: true },
   },
   nitro: {
     prerender: {
