@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: shaswata56/my-blog
+  branch: master
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: public/assets/images
+public_folder: /assets/images
+
+collections:
+  - name: blog
+    label: Blog Posts
+    folder: content
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: date, format: YYYY-MM-DD }
+      - { label: Published, name: published, widget: boolean, default: true }
+      - { label: Description, name: description, widget: string, required: false }
+      - { label: Body, name: body, widget: markdown }
