@@ -26,158 +26,196 @@
       background: var(--bg) !important;
       color: var(--text) !important;
       font-family: 'Inter', system-ui, sans-serif !important;
-      font-size: 15px;
     }
 
-    /* scrollbar */
     ::-webkit-scrollbar { width: 8px; background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
 
-    /* ── top nav bar ── */
-    header, nav,
-    [class*="Header"], [class*="AppBar"],
-    [class*="Toolbar"]:not([class*="Editor"]) {
+    /* ── header ── */
+    #nc-root > div > header {
       background: var(--bg2) !important;
       border-bottom: 1px solid var(--border) !important;
       box-shadow: none !important;
-      color: var(--text) !important;
     }
 
-    /* nav links */
-    header a, header button,
-    [class*="Header"] a, [class*="Header"] button {
+    #nc-root > div > header nav a,
+    #nc-root > div > header nav button {
+      background: transparent !important;
       color: var(--muted) !important;
+      box-shadow: none !important;
+      font-family: 'Inter', sans-serif !important;
       font-size: 0.78rem !important;
+      letter-spacing: 0.06em !important;
       text-transform: uppercase !important;
-      letter-spacing: 0.08em !important;
       font-weight: 500 !important;
     }
-    header a:hover, header a[class*="active"],
-    [class*="Header"] a:hover {
+
+    #nc-root > div > header nav a.header-link-active,
+    #nc-root > div > header nav a:hover,
+    #nc-root > div > header nav button:hover {
       color: var(--amber) !important;
+      background: transparent !important;
+    }
+
+    /* quick add + avatar */
+    #nc-root > div > header [role="button"] {
+      color: var(--muted) !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.06em !important;
+    }
+    #nc-root > div > header [role="button"]:hover {
+      color: var(--amber) !important;
+    }
+    #nc-root > div > header svg path[fill="#1E2532"] {
+      fill: var(--bg2) !important;
     }
 
     /* ── sidebar ── */
-    aside,
-    [class*="Sidebar"], [class*="sidebar"],
-    [class*="Nav"]:not(nav) {
+    #nc-root aside {
       background: var(--bg2) !important;
       border-right: 1px solid var(--border) !important;
       box-shadow: none !important;
     }
 
-    aside a, aside button,
-    [class*="Sidebar"] a, [class*="Sidebar"] button {
+    #nc-root aside h2 {
       color: var(--muted) !important;
-      font-size: 0.82rem !important;
-    }
-    aside a:hover, aside a[class*="active"],
-    [class*="Sidebar"] a[class*="active"] {
-      color: var(--amber) !important;
-      background: transparent !important;
-    }
-
-    /* ── main area ── */
-    main, [class*="Main"], [class*="Collection"],
-    [class*="EditorContainer"] {
-      background: var(--bg) !important;
-    }
-
-    /* collection heading */
-    [class*="Collection"] h1,
-    [class*="CollectionTop"] h1 {
-      font-family: 'Merriweather', serif !important;
-      color: var(--text) !important;
-      font-size: 1.3rem !important;
-      font-weight: 700 !important;
-    }
-
-    /* ── buttons (global) ── */
-    button, [role="button"] {
       font-family: 'Inter', sans-serif !important;
-      transition: background-color 0.15s, color 0.15s, border-color 0.15s !important;
-    }
-
-    /* primary action buttons */
-    [class*="NewEntry"] button,
-    [class*="PublishButton"] button,
-    [class*="PublishControl"] button,
-    button[class*="primary"],
-    button[class*="Primary"] {
-      background: transparent !important;
-      color: var(--amber) !important;
-      border: 1px solid var(--amber) !important;
-      border-radius: 3px !important;
-      box-shadow: none !important;
-      font-size: 0.82rem !important;
-      font-weight: 500 !important;
-      padding: 0.45rem 1rem !important;
+      font-size: 0.68rem !important;
       text-transform: uppercase !important;
-      letter-spacing: 0.06em !important;
-    }
-    [class*="NewEntry"] button:hover,
-    [class*="PublishButton"] button:hover,
-    [class*="PublishControl"] button:hover,
-    button[class*="primary"]:hover,
-    button[class*="Primary"]:hover {
-      background: var(--amber) !important;
-      color: var(--bg) !important;
+      letter-spacing: 0.12em !important;
+      font-weight: 500 !important;
     }
 
-    /* ── entry / post list cards ── */
-    [class*="ListCard"], [class*="EntryCard"],
-    [class*="Entry"]:not(header):not(aside) {
-      background: var(--bg2) !important;
-      border: 1px solid var(--border) !important;
-      border-radius: 3px !important;
-      box-shadow: none !important;
-      color: var(--text) !important;
-      transition: border-color 0.15s !important;
+    #nc-root aside ul li a {
+      color: var(--muted) !important;
+      background: transparent !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.85rem !important;
+      border-left: 2px solid transparent !important;
     }
-    [class*="ListCard"]:hover, [class*="EntryCard"]:hover {
-      border-color: var(--amber) !important;
-    }
-    [class*="ListCard"] *, [class*="EntryCard"] * {
-      color: var(--text) !important;
-      font-family: 'Merriweather', serif !important;
+    #nc-root aside ul li a.sidebar-active,
+    #nc-root aside ul li a:hover {
+      color: var(--amber) !important;
+      background: transparent !important;
+      border-left-color: var(--amber) !important;
     }
 
-    /* ── search ── */
-    input[type="search"], [class*="Search"] input {
+    /* sidebar search */
+    #nc-root aside input {
       background: var(--bg) !important;
       border: 1px solid var(--border) !important;
       border-radius: 3px !important;
       color: var(--text) !important;
       font-family: 'Inter', sans-serif !important;
       font-size: 0.85rem !important;
-      padding: 0.4rem 0.75rem !important;
     }
-    input[type="search"]:focus, [class*="Search"] input:focus {
+    #nc-root aside input:focus {
       border-color: var(--amber) !important;
       outline: none !important;
     }
+    #nc-root aside svg { color: var(--muted) !important; fill: var(--muted) !important; }
 
-    /* ── editor toolbar ── */
-    [class*="EditorToolbar"], [class*="Toolbar"][class*="Editor"] {
+    /* ── main / collection area ── */
+    #nc-root main {
+      background: var(--bg) !important;
+    }
+
+    /* collection top bar */
+    #nc-root main > div:first-child {
       background: var(--bg2) !important;
       border-bottom: 1px solid var(--border) !important;
       box-shadow: none !important;
     }
 
-    /* ── form labels ── */
-    label, [class*="Label"], [class*="FieldLabel"] {
+    #nc-root main h1 {
+      font-family: 'Merriweather', serif !important;
+      color: var(--text) !important;
+      font-size: 1.2rem !important;
+      font-weight: 700 !important;
+    }
+
+    /* New Blog Posts button */
+    #nc-root main > div:first-child a {
+      background: transparent !important;
+      color: var(--amber) !important;
+      border: 1px solid var(--amber) !important;
+      border-radius: 3px !important;
+      box-shadow: none !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.78rem !important;
+      font-weight: 500 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.06em !important;
+      padding: 0.45rem 1rem !important;
+      transition: background 0.15s, color 0.15s !important;
+    }
+    #nc-root main > div:first-child a:hover {
+      background: var(--amber) !important;
+      color: var(--bg) !important;
+    }
+
+    /* sort by + view controls */
+    #nc-root main [role="button"],
+    #nc-root main button[aria-label*="view"] {
       color: var(--muted) !important;
-      font-size: 0.7rem !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.8rem !important;
+    }
+    #nc-root main [role="button"]:hover,
+    #nc-root main button[aria-label*="view"]:hover {
+      color: var(--amber) !important;
+    }
+    #nc-root main svg { fill: currentColor !important; }
+
+    /* ── post list cards ── */
+    #nc-root main ul li {
+      background: var(--bg2) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 3px !important;
+      box-shadow: none !important;
+      transition: border-color 0.15s !important;
+    }
+    #nc-root main ul li:hover {
+      border-color: var(--amber) !important;
+    }
+    #nc-root main ul li a {
+      color: var(--text) !important;
+    }
+    #nc-root main ul li h2 {
+      font-family: 'Merriweather', serif !important;
+      color: var(--text) !important;
+      font-size: 0.9rem !important;
+      font-weight: 400 !important;
+    }
+
+    /* ── editor ── */
+    #nc-root [data-slate-editor],
+    #nc-root .cm-editor {
+      background: var(--bg2) !important;
+      color: var(--text) !important;
+      font-family: 'Merriweather', serif !important;
+    }
+    .cm-gutters { background: var(--bg) !important; border-right: 1px solid var(--border) !important; }
+    .cm-activeLine { background: rgba(196,166,122,0.04) !important; }
+    .cm-cursor { border-left-color: var(--amber) !important; }
+
+    /* ── form fields ── */
+    #nc-root label {
+      color: var(--muted) !important;
+      font-size: 0.68rem !important;
       text-transform: uppercase !important;
       letter-spacing: 0.1em !important;
       font-family: 'Inter', sans-serif !important;
       font-weight: 500 !important;
     }
-
-    /* ── form inputs ── */
-    input[type="text"], input[type="date"],
-    input[type="email"], textarea, select,
-    [class*="TextControl"], [class*="Input"] {
+    #nc-root input[type="text"],
+    #nc-root input[type="date"],
+    #nc-root textarea,
+    #nc-root select {
       background: var(--bg2) !important;
       border: 1px solid var(--border) !important;
       border-radius: 3px !important;
@@ -185,49 +223,31 @@
       font-family: 'Merriweather', serif !important;
       font-size: 0.95rem !important;
     }
-    input[type="text"]:focus, input[type="date"]:focus,
-    textarea:focus, select:focus,
-    [class*="TextControl"]:focus {
+    #nc-root input[type="text"]:focus,
+    #nc-root input[type="date"]:focus,
+    #nc-root textarea:focus {
       border-color: var(--amber) !important;
       outline: none !important;
       box-shadow: none !important;
     }
 
-    /* ── markdown / code editor ── */
-    .cm-editor, .CodeMirror,
-    [class*="CodeMirror"], [class*="RawEditor"] {
-      background: var(--bg2) !important;
-      color: var(--text) !important;
-      border: 1px solid var(--border) !important;
-      border-radius: 3px !important;
-      font-family: 'Merriweather', serif !important;
-      font-size: 1rem !important;
-    }
-    .cm-gutters { background: var(--bg) !important; border-right: 1px solid var(--border) !important; }
-    .cm-activeLineGutter, .cm-activeLine { background: rgba(196,166,122,0.05) !important; }
-    .cm-cursor { border-left-color: var(--amber) !important; }
-
     /* ── login page ── */
-    [class*="AuthenticationPage"],
-    [class*="Login"] {
+    [class*="AuthenticationPage"] {
       background: var(--bg) !important;
     }
-    [class*="AuthenticationPage"] > *,
-    [class*="Login"] > * {
+    [class*="AuthenticationPage"] section,
+    [class*="AuthenticationPage"] > div {
       background: var(--bg2) !important;
       border: 1px solid var(--border) !important;
       border-radius: 5px !important;
       box-shadow: none !important;
-      max-width: 360px !important;
     }
     [class*="AuthenticationPage"] h1 {
       font-family: 'Merriweather', serif !important;
       color: var(--text) !important;
-      font-size: 1.3rem !important;
     }
     [class*="AuthenticationPage"] p {
       color: var(--muted) !important;
-      font-size: 0.85rem !important;
     }
     [class*="AuthenticationPage"] button {
       background: transparent !important;
@@ -238,14 +258,6 @@
     }
     [class*="AuthenticationPage"] button:hover {
       background: var(--amber) !important;
-      color: var(--bg) !important;
-    }
-
-    /* kill blue everywhere */
-    [style*="background-color: rgb(50, 115, 220)"],
-    [style*="background-color: rgb(21, 101, 192)"],
-    [style*="background: rgb(50, 115, 220)"] {
-      background-color: var(--amber) !important;
       color: var(--bg) !important;
     }
   </style>
