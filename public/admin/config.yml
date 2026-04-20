@@ -2,9 +2,7 @@ backend:
   name: github
   repo: shaswata56/my-blog
   branch: master
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
-  site_domain: illustrious-florentine-ddb8c3.netlify.app
+  base_url: https://sveltia-cms-auth.shaswata56.workers.dev
 
 media_folder: public/assets/images
 public_folder: /assets/images
