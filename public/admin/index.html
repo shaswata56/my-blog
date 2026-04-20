@@ -66,16 +66,9 @@
       background: transparent !important;
     }
 
-    /* quick add — keep border */
-    #nc-root > div > header [role="button"][aria-haspopup="true"]:first-of-type {
-      border: 1px solid var(--border) !important;
-      border-radius: 3px !important;
-      padding: 0.3rem 0.7rem !important;
-      color: var(--muted) !important;
-    }
-    #nc-root > div > header [role="button"][aria-haspopup="true"]:first-of-type:hover {
-      border-color: var(--amber) !important;
-      color: var(--amber) !important;
+    /* hide quick add button */
+    #nc-root > div > header [role="button"][aria-haspopup="true"]:not([aria-label]) {
+      display: none !important;
     }
 
     #nc-root > div > header svg { color: var(--muted) !important; }
@@ -281,6 +274,33 @@
       name: 'postLogout',
       handler: () => { window.location.href = '/'; }
     });
+
+    // ── UI patches ───────────────────────────────────────────
+    const AVATAR_URL = 'https://shaswata.me/assets/profile_picture.DNMGGUvM.jpg';
+
+    function patchUI() {
+      // replace avatar placeholder with real photo
+      const avatarIcon = document.querySelector('[aria-label="Account options dropdown"] svg');
+      if (avatarIcon && !document.getElementById('custom-avatar')) {
+        const img = document.createElement('img');
+        img.id = 'custom-avatar';
+        img.src = AVATAR_URL;
+        Object.assign(img.style, {
+          width: '28px', height: '28px', borderRadius: '50%',
+          objectFit: 'cover', border: '1px solid #4a4440', display: 'block'
+        });
+        avatarIcon.parentElement.replaceChild(img, avatarIcon);
+      }
+
+      // fix "NEW BLOG POSTS" button — center text, remove icon misalignment
+      document.querySelectorAll('#nc-root main > div:first-child a').forEach(btn => {
+        btn.style.cssText += 'display:inline-flex!important;align-items:center!important;justify-content:center!important;line-height:1!important;';
+      });
+    }
+
+    // run after CMS renders, then periodically for route changes
+    setTimeout(patchUI, 1500);
+    setInterval(patchUI, 3000);
 
     // ── autosave ──────────────────────────────────────────────
     const AUTOSAVE_PREFIX = 'cms_autosave:';
