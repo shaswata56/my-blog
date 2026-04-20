@@ -32,45 +32,54 @@
     ::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
 
     /* ── header ── */
-    #nc-root > div > header {
+    #nc-root > div > header,
+    #nc-root > div > header > div {
       background: var(--bg2) !important;
       border-bottom: 1px solid var(--border) !important;
+      box-shadow: none !important;
+      color: var(--text) !important;
+    }
+
+    #nc-root > div > header * {
+      background: transparent !important;
       box-shadow: none !important;
     }
 
     #nc-root > div > header nav a,
-    #nc-root > div > header nav button {
-      background: transparent !important;
+    #nc-root > div > header nav button,
+    #nc-root > div > header [role="button"] {
       color: var(--muted) !important;
-      box-shadow: none !important;
       font-family: 'Inter', sans-serif !important;
       font-size: 0.78rem !important;
       letter-spacing: 0.06em !important;
       text-transform: uppercase !important;
       font-weight: 500 !important;
+      border: none !important;
+      border-radius: 0 !important;
     }
 
     #nc-root > div > header nav a.header-link-active,
     #nc-root > div > header nav a:hover,
-    #nc-root > div > header nav button:hover {
+    #nc-root > div > header nav button:hover,
+    #nc-root > div > header [role="button"]:hover {
       color: var(--amber) !important;
       background: transparent !important;
     }
 
-    /* quick add + avatar */
-    #nc-root > div > header [role="button"] {
+    /* quick add — keep border */
+    #nc-root > div > header [role="button"][aria-haspopup="true"]:first-of-type {
+      border: 1px solid var(--border) !important;
+      border-radius: 3px !important;
+      padding: 0.3rem 0.7rem !important;
       color: var(--muted) !important;
-      background: transparent !important;
-      box-shadow: none !important;
-      font-size: 0.78rem !important;
-      letter-spacing: 0.06em !important;
     }
-    #nc-root > div > header [role="button"]:hover {
+    #nc-root > div > header [role="button"][aria-haspopup="true"]:first-of-type:hover {
+      border-color: var(--amber) !important;
       color: var(--amber) !important;
     }
-    #nc-root > div > header svg path[fill="#1E2532"] {
-      fill: var(--bg2) !important;
-    }
+
+    #nc-root > div > header svg { color: var(--muted) !important; }
+    #nc-root > div > header svg path[fill="#1E2532"] { fill: var(--bg2) !important; }
 
     /* ── sidebar ── */
     #nc-root aside {
@@ -172,19 +181,22 @@
     #nc-root main svg { fill: currentColor !important; }
 
     /* ── post list cards ── */
-    #nc-root main ul li {
+    #nc-root main ul li,
+    #nc-root main ul li *,
+    #nc-root main ul li a,
+    #nc-root main ul li > div {
       background: var(--bg2) !important;
+      box-shadow: none !important;
+    }
+    #nc-root main ul li {
       border: 1px solid var(--border) !important;
       border-radius: 3px !important;
-      box-shadow: none !important;
       transition: border-color 0.15s !important;
     }
     #nc-root main ul li:hover {
       border-color: var(--amber) !important;
     }
-    #nc-root main ul li a {
-      color: var(--text) !important;
-    }
+    #nc-root main ul li a { color: var(--text) !important; }
     #nc-root main ul li h2 {
       font-family: 'Merriweather', serif !important;
       color: var(--text) !important;
