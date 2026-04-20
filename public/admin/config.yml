@@ -4,6 +4,7 @@ backend:
   branch: master
   base_url: https://sveltia-cms-auth.shaswata56.workers.dev
 
+publish_mode: editorial_workflow
 logo_url: /favicon.ico
 show_preview_links: false
 

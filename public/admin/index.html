@@ -269,6 +269,162 @@
       name: 'postLogout',
       handler: () => { window.location.href = '/'; }
     });
+
+    // ── autosave ──────────────────────────────────────────────
+    const AUTOSAVE_PREFIX = 'cms_autosave:';
+    const AUTOSAVE_INTERVAL = 30000;
+    let autosaveKey = null;
+    let isDirty = false;
+    let restoreBanner = null;
+
+    function getAutosaveKey() {
+      return AUTOSAVE_PREFIX + location.hash;
+    }
+
+    function scrapeFields() {
+      const fields = {};
+      // text inputs (title, date, description, etc.)
+      document.querySelectorAll('#nc-root input[type="text"], #nc-root input[type="date"]').forEach(el => {
+        const label = el.closest('[class]')?.querySelector('label')?.textContent?.trim()
+          || el.placeholder || el.name;
+        if (label) fields[label] = el.value;
+      });
+      // markdown / codemirror body
+      const cm = document.querySelector('.cm-content');
+      if (cm) fields['__body__'] = cm.innerText;
+      // boolean toggles
+      document.querySelectorAll('#nc-root input[type="checkbox"]').forEach(el => {
+        const label = el.closest('[class]')?.querySelector('label')?.textContent?.trim() || el.name;
+        if (label) fields[label] = el.checked;
+      });
+      return fields;
+    }
+
+    function saveToStorage() {
+      const key = getAutosaveKey();
+      if (!key.includes('/entries/') && !key.includes('/new')) return;
+      const fields = scrapeFields();
+      if (Object.keys(fields).length === 0) return;
+      localStorage.setItem(key, JSON.stringify({ fields, ts: Date.now() }));
+      isDirty = false;
+    }
+
+    function clearAutosave(key) {
+      localStorage.removeItem(key || getAutosaveKey());
+    }
+
+    function showRestoreBanner(saved) {
+      if (restoreBanner) return;
+      const age = Math.round((Date.now() - saved.ts) / 60000);
+      restoreBanner = document.createElement('div');
+      restoreBanner.id = 'autosave-banner';
+      restoreBanner.innerHTML = `
+        <span>Unsaved draft found (${age} min ago)</span>
+        <button id="autosave-restore">Restore</button>
+        <button id="autosave-discard">Discard</button>
+      `;
+      Object.assign(restoreBanner.style, {
+        position: 'fixed', bottom: '1.5rem', left: '50%',
+        transform: 'translateX(-50%)',
+        background: '#242220', border: '1px solid #c4a67a',
+        borderRadius: '4px', padding: '0.6rem 1rem',
+        display: 'flex', alignItems: 'center', gap: '0.75rem',
+        zIndex: '99999', fontFamily: 'Inter, sans-serif',
+        fontSize: '0.82rem', color: '#d4c9bb', boxShadow: '0 4px 16px rgba(0,0,0,0.4)'
+      });
+      document.body.appendChild(restoreBanner);
+
+      document.getElementById('autosave-restore').addEventListener('click', () => {
+        restoreFields(saved.fields);
+        restoreBanner.remove(); restoreBanner = null;
+      });
+      document.getElementById('autosave-discard').addEventListener('click', () => {
+        clearAutosave();
+        restoreBanner.remove(); restoreBanner = null;
+      });
+
+      // style buttons
+      ['autosave-restore', 'autosave-discard'].forEach((id, i) => {
+        const btn = document.getElementById(id);
+        Object.assign(btn.style, {
+          background: 'transparent', border: '1px solid',
+          borderColor: i === 0 ? '#c4a67a' : '#4a4440',
+          color: i === 0 ? '#c4a67a' : '#7a6a5a',
+          borderRadius: '3px', padding: '0.25rem 0.6rem',
+          cursor: 'pointer', fontSize: '0.78rem', fontFamily: 'Inter, sans-serif'
+        });
+      });
+    }
+
+    function setNativeValue(el, value) {
+      // React controls inputs — need to trigger synthetic event
+      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set;
+      if (nativeInputValueSetter) {
+        nativeInputValueSetter.call(el, value);
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }
+
+    function restoreFields(fields) {
+      document.querySelectorAll('#nc-root input[type="text"], #nc-root input[type="date"]').forEach(el => {
+        const label = el.closest('[class]')?.querySelector('label')?.textContent?.trim()
+          || el.placeholder || el.name;
+        if (label && fields[label] !== undefined) setNativeValue(el, fields[label]);
+      });
+      // codemirror body — dispatch transaction
+      if (fields['__body__']) {
+        const cmView = document.querySelector('.cm-editor')?._cmView
+          || document.querySelector('.cm-editor')?.CodeMirror;
+        if (cmView?.dispatch) {
+          cmView.dispatch({
+            changes: { from: 0, to: cmView.state.doc.length, insert: fields['__body__'] }
+          });
+        }
+      }
+    }
+
+    // watch for route changes (hash = entry navigation)
+    let lastHash = '';
+    function onHashChange() {
+      const key = getAutosaveKey();
+      if (key === lastHash) return;
+      lastHash = key;
+      isDirty = false;
+      if (restoreBanner) { restoreBanner.remove(); restoreBanner = null; }
+
+      if (!key.includes('/entries/') && !key.includes('/new')) return;
+
+      // check for stored autosave
+      setTimeout(() => {
+        const stored = localStorage.getItem(key);
+        if (!stored) return;
+        try {
+          const saved = JSON.parse(stored);
+          if (saved && saved.ts && saved.fields) showRestoreBanner(saved);
+        } catch { clearAutosave(key); }
+      }, 1200); // wait for CMS to render fields
+    }
+
+    // mark dirty on any input
+    document.addEventListener('input', () => { isDirty = true; }, true);
+
+    // periodic autosave
+    setInterval(() => {
+      if (isDirty) saveToStorage();
+    }, AUTOSAVE_INTERVAL);
+
+    // clear autosave on successful save/publish
+    CMS.registerEventListener({ name: 'preSave', handler: () => { clearAutosave(); isDirty = false; } });
+    CMS.registerEventListener({ name: 'postSave', handler: () => { clearAutosave(); isDirty = false; } });
+
+    // warn before leaving with unsaved changes
+    window.addEventListener('beforeunload', e => {
+      if (isDirty) { e.preventDefault(); e.returnValue = ''; }
+    });
+
+    // watch hash changes for entry navigation
+    window.addEventListener('hashchange', onHashChange);
+    window.addEventListener('load', () => setTimeout(onHashChange, 800));
   </script>
 </body>
 </html>
