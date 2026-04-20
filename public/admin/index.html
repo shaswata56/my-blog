@@ -1,12 +1,239 @@
 <!doctype html>
-<html>
+<html data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
-  <title>Blog Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.github.com https://sveltia-cms-auth.shaswata56.workers.dev https://unpkg.com; frame-src 'none'; object-src 'none';" />
+  <title>Blog Admin — Shaswata</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #1a1917;
+      --bg2: #242220;
+      --border: #4a4440;
+      --text: #d4c9bb;
+      --muted: #7a6a5a;
+      --amber: #c4a67a;
+      --amber-hover: #d9bc94;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+    }
+
+    /* ── Login screen ── */
+    [class*="AuthenticationPage"] {
+      background-color: var(--bg) !important;
+    }
+
+    [class*="AuthenticationPage"] section {
+      background-color: var(--bg2) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 6px !important;
+      box-shadow: none !important;
+      padding: 2.5rem !important;
+      max-width: 380px !important;
+    }
+
+    [class*="AuthenticationPage"] h1 {
+      font-family: 'Merriweather', serif !important;
+      font-size: 1.4rem !important;
+      color: var(--text) !important;
+      margin-bottom: 0.5rem !important;
+      font-weight: 700 !important;
+    }
+
+    [class*="AuthenticationPage"] p {
+      color: var(--muted) !important;
+      font-size: 0.85rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+
+    [class*="AuthenticationPage"] button {
+      background-color: transparent !important;
+      color: var(--amber) !important;
+      border: 1px solid var(--amber) !important;
+      border-radius: 4px !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.9rem !important;
+      font-weight: 500 !important;
+      padding: 0.55rem 1.2rem !important;
+      cursor: pointer !important;
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease !important;
+      box-shadow: none !important;
+    }
+
+    [class*="AuthenticationPage"] button:hover {
+      background-color: var(--amber) !important;
+      color: var(--bg) !important;
+    }
+
+    /* ── Top bar ── */
+    [class*="AppHeaderContent"],
+    [class*="AppHeader"],
+    header[class*="App"] {
+      background-color: var(--bg2) !important;
+      border-bottom: 1px solid var(--border) !important;
+      box-shadow: none !important;
+    }
+
+    [class*="AppHeaderButton"],
+    [class*="AppHeaderNavLink"] {
+      color: var(--muted) !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.82rem !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.08em !important;
+    }
+
+    [class*="AppHeaderNavLink"]:hover,
+    [class*="AppHeaderNavLink"][class*="active"] {
+      color: var(--amber) !important;
+    }
+
+    /* ── Sidebar / collection list ── */
+    [class*="CollectionTopNewButton"],
+    [class*="sidebar"] {
+      background-color: var(--bg2) !important;
+      border-right: 1px solid var(--border) !important;
+    }
+
+    [class*="CollectionTopNewButton"] button,
+    [class*="NewEntryButton"] button {
+      background-color: transparent !important;
+      color: var(--amber) !important;
+      border: 1px solid var(--amber) !important;
+      border-radius: 4px !important;
+      font-size: 0.85rem !important;
+      font-weight: 500 !important;
+      padding: 0.4rem 1rem !important;
+      box-shadow: none !important;
+      transition: background-color 0.2s, color 0.2s !important;
+    }
+
+    [class*="CollectionTopNewButton"] button:hover,
+    [class*="NewEntryButton"] button:hover {
+      background-color: var(--amber) !important;
+      color: var(--bg) !important;
+    }
+
+    /* ── Entry list ── */
+    [class*="EntryCard"],
+    [class*="ListCard"] {
+      background-color: var(--bg2) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 4px !important;
+      box-shadow: none !important;
+    }
+
+    [class*="EntryCard"]:hover,
+    [class*="ListCard"]:hover {
+      border-color: var(--amber) !important;
+    }
+
+    [class*="EntryCard"] h2,
+    [class*="ListCard"] h2,
+    [class*="EntryCard"] p,
+    [class*="ListCard"] p {
+      color: var(--text) !important;
+      font-family: 'Merriweather', serif !important;
+    }
+
+    /* ── Editor ── */
+    [class*="EditorContainer"],
+    [class*="Editor"] > div {
+      background-color: var(--bg) !important;
+    }
+
+    [class*="EditorToolbar"],
+    [class*="Toolbar"] {
+      background-color: var(--bg2) !important;
+      border-bottom: 1px solid var(--border) !important;
+      box-shadow: none !important;
+    }
+
+    [class*="PublishButton"] button,
+    [class*="PublishControls"] button {
+      background-color: transparent !important;
+      color: var(--amber) !important;
+      border: 1px solid var(--amber) !important;
+      border-radius: 4px !important;
+      box-shadow: none !important;
+      font-size: 0.85rem !important;
+      transition: background-color 0.2s, color 0.2s !important;
+    }
+
+    [class*="PublishButton"] button:hover,
+    [class*="PublishControls"] button:hover {
+      background-color: var(--amber) !important;
+      color: var(--bg) !important;
+    }
+
+    /* ── Form fields ── */
+    [class*="ControlContainer"] label,
+    [class*="FieldLabel"] {
+      color: var(--muted) !important;
+      font-size: 0.72rem !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.1em !important;
+      font-family: 'Inter', sans-serif !important;
+    }
+
+    input[class*="TextControl"],
+    input[type="text"],
+    input[type="date"],
+    textarea {
+      background-color: var(--bg2) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 4px !important;
+      color: var(--text) !important;
+      font-family: 'Merriweather', serif !important;
+      font-size: 0.95rem !important;
+      padding: 0.5rem 0.75rem !important;
+      box-shadow: none !important;
+    }
+
+    input[class*="TextControl"]:focus,
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    textarea:focus {
+      border-color: var(--amber) !important;
+      outline: none !important;
+    }
+
+    /* ── Markdown editor ── */
+    [class*="RawEditor"],
+    [class*="CodeMirror"],
+    .cm-editor {
+      background-color: var(--bg2) !important;
+      color: var(--text) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 4px !important;
+      font-family: 'Merriweather', serif !important;
+      font-size: 1rem !important;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 8px; background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    CMS.registerEventListener({
+      name: 'postLogout',
+      handler: () => { window.location.href = '/'; }
+    });
+  </script>
 </body>
 </html>
