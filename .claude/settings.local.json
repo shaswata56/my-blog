@@ -15,7 +15,8 @@
       "Bash(findstr \"LISTENING\")",
       "Bash(taskkill /PID 43784 /F)",
       "Bash(node -e \"console.log\\('syntax check'\\)\")",
-      "Bash(curl -s -o \"C:/Users/shaswata/my-blog/public/RedHeart.png\" \"https://blog.shaswata.me/assets/RedHeart.CSKz6yaY.png\")"
+      "Bash(curl -s -o \"C:/Users/shaswata/my-blog/public/RedHeart.png\" \"https://blog.shaswata.me/assets/RedHeart.CSKz6yaY.png\")",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
