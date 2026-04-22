@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <section class="archive-section">
         <p class="section-label">Archive</p>
         <!-- Render paginated posts grouped by year -->
         <div v-for="(posts, year) in paginatedGroupedPosts" :key="year" class="year-group">
@@ -26,7 +26,7 @@
                 {{ page }}
             </button>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup lang="ts">
@@ -96,7 +96,7 @@ const formatDate = (date: string) => {
 <style scoped>
 .section-label {
     font-size: 0.7rem;
-    font-family: "ui-sans-serif", system-ui, sans-serif;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--accent-text-color);
@@ -114,11 +114,19 @@ const formatDate = (date: string) => {
     gap: 0 1.5rem;
     align-items: baseline;
     border-bottom: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0 0.5rem;
+    margin: 0 -0.5rem;
+    transition: background 0.2s ease;
+}
+
+.year-row:hover {
+    background: var(--accent-color);
 }
 
 .year-marker {
     font-size: 0.65rem;
-    font-family: "ui-sans-serif", system-ui, sans-serif;
+    font-family: "Fira Mono", "Courier New", monospace;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--accent-text-color);
@@ -140,7 +148,7 @@ const formatDate = (date: string) => {
 
 .entry-date {
     font-size: 0.72rem;
-    font-family: "ui-sans-serif", system-ui, sans-serif;
+    font-family: "Fira Mono", "Courier New", monospace;
     color: var(--accent-text-color);
     opacity: 0.7;
     white-space: nowrap;
@@ -152,6 +160,14 @@ const formatDate = (date: string) => {
     font-size: 0.92rem;
     color: var(--text-color);
     line-height: 1.5;
+}
+
+.post-entry a {
+    transition: transform 0.15s ease;
+}
+
+.post-entry a:hover {
+    transform: translateX(2px);
 }
 
 .post-entry a:hover .entry-title {
@@ -183,7 +199,7 @@ const formatDate = (date: string) => {
     background-color: transparent;
     color: var(--accent-text-color);
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 4px;
     transition: color 0.2s ease, border-color 0.2s ease;
 }
 

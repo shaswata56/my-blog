@@ -40,7 +40,8 @@
 }
 
 .mini-content p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  font-family: "Fira Mono", "Courier New", monospace;
   color: var(--accent-text-color);
   line-height: 1.5;
   margin-bottom: 0.75rem;
@@ -68,8 +69,12 @@
 
 .social-link:hover {
   color: var(--link-color-hover);
-  transform: none;
+  transform: translateY(-3px);
   box-shadow: none;
   background-color: transparent;
+}
+
+.social-link.router-link-active {
+  color: var(--link-color);
 }
 </style>

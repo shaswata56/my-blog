@@ -76,7 +76,7 @@ const getExcerpt = (body) => {
 
 .section-label {
   font-size: 0.7rem;
-  font-family: "ui-sans-serif", system-ui, sans-serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--accent-text-color);
@@ -93,11 +93,16 @@ const getExcerpt = (body) => {
 .post-item {
   display: block;
   position: relative;
-  padding: 1.1rem 0;
+  padding: 1.1rem 0.75rem;
+  margin: 0 -0.75rem;
   border-bottom: 1px solid var(--border-color);
   color: inherit;
-  transition: background-color 0.15s ease;
-  border-radius: 2px;
+  transition: background 0.2s ease;
+  border-radius: 6px;
+}
+
+.post-item:first-child {
+  border-top: 1px solid var(--border-color);
 }
 
 .margin-date {
@@ -106,7 +111,7 @@ const getExcerpt = (body) => {
   right: calc(100% + 1.5rem);
   top: 1.3rem;
   font-size: 0.7rem;
-  font-family: "ui-sans-serif", system-ui, sans-serif;
+  font-family: "Fira Mono", "Courier New", monospace;
   color: var(--accent-text-color);
   opacity: 0.6;
   white-space: nowrap;
@@ -124,6 +129,7 @@ const getExcerpt = (body) => {
 
 .post-item:hover {
   color: inherit;
+  background: var(--accent-color);
 }
 
 .post-item:hover .title {
@@ -131,8 +137,9 @@ const getExcerpt = (body) => {
 }
 
 .title {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
   margin: 0 0 0.2rem;
   color: var(--text-color);
   transition: color 0.2s ease;
@@ -141,9 +148,9 @@ const getExcerpt = (body) => {
 
 .timeframe {
   font-size: 0.75rem;
-  font-family: "ui-sans-serif", system-ui, sans-serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   color: var(--accent-text-color);
-  opacity: 0.75;
+  letter-spacing: 0.03em;
   margin: 0 0 0.4rem;
 }
 
@@ -169,7 +176,7 @@ const getExcerpt = (body) => {
   background-color: transparent;
   color: var(--accent-text-color);
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 4px;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 

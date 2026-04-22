@@ -16,7 +16,11 @@
       "Bash(taskkill /PID 43784 /F)",
       "Bash(node -e \"console.log\\('syntax check'\\)\")",
       "Bash(curl -s -o \"C:/Users/shaswata/my-blog/public/RedHeart.png\" \"https://blog.shaswata.me/assets/RedHeart.CSKz6yaY.png\")",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(netstat -tuln)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__computer"
     ]
   }
 }
