@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+
 useHead({
   title: "Shaswata's Blog",
   meta: [
@@ -65,6 +66,8 @@ useSeoMeta({
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap');
 @import url("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css");
 
 @import 'prismjs/themes/prism.css';
@@ -78,6 +81,7 @@ useSeoMeta({
   --link-color: #c4a67a;
   --text-color: #d4c9bb;
   --accent-text-color: #7a6a5a;
+  --text-color-secondary: #7a6a5a;
   --link-color-hover: #d9bc94;
   --box-shadow: none;
   --transition-duration: 0.2s;
@@ -90,6 +94,7 @@ useSeoMeta({
   --link-color: #a07840;
   --text-color: #2a2420;
   --accent-text-color: #7a6a5a;
+  --text-color-secondary: #7a6a5a;
   --link-color-hover: #c4891e;
   --box-shadow: none;
 }
@@ -98,14 +103,13 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   font-family: "Merriweather", "SolaimanLipi", "NikoshBAN", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   color: var(--text-color);
   background-color: var(--background-color);
-  scroll-behavior: smooth;
   box-sizing: border-box;
 }
 
@@ -139,8 +143,7 @@ a:hover {
 ul li a {
   line-height: 1.5;
   font-size: 15px;
-  font-family: "ui-sans-serif", "SolaimanLipi", "NikoshBAN", system-ui, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   font-weight: 500;
 }
 
@@ -165,8 +168,7 @@ section {
 }
 
 h3 {
-  font-family: "ui-sans-serif", "SolaimanLipi", "NikoshBAN", system-ui, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 .home {
@@ -251,11 +253,16 @@ header {
   justify-content: center;
 }
 
-.rendered h1,
 .rendered h2,
 .rendered h3 {
-  font-family: "ui-sans-serif", "SolaimanLipi", "NikoshBAN", system-ui, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.rendered h2::before {
+  content: '·';
+  color: var(--link-color);
+  margin-right: 0.4rem;
+  font-weight: 400;
 }
 
 .rendered hr {
@@ -361,6 +368,48 @@ header {
 
   .rendered img {
     max-width: 100%;
+  }
+}
+
+.post-item {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: postReveal 0.35s ease forwards;
+}
+
+.post-item:nth-child(1) { animation-delay: 0.05s; }
+.post-item:nth-child(2) { animation-delay: 0.10s; }
+.post-item:nth-child(3) { animation-delay: 0.15s; }
+.post-item:nth-child(4) { animation-delay: 0.20s; }
+.post-item:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes postReveal {
+  to { opacity: 1; transform: none; }
+}
+
+.tag {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.62rem;
+  color: var(--accent-text-color);
+  background: var(--accent-color);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  padding: 0.15rem 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.tag:hover {
+  border-color: var(--link-color);
+  color: var(--link-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 

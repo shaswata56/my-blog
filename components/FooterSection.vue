@@ -30,6 +30,7 @@ const heartSrc = '/RedHeart.png'
   justify-content: center;
   align-items: center;
   font-size: 0.85rem;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   color: var(--accent-text-color);
   gap: 0.35rem;
 }
@@ -49,7 +50,7 @@ const heartSrc = '/RedHeart.png'
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 2px;
-  animation: heartbeat 1.2s ease-in-out infinite;
+  animation: heartbeat 1.8s ease-in-out infinite;
 }
 
 @keyframes heartbeat {

@@ -62,7 +62,7 @@ onMounted(() => {
 
 .toc-label {
   font-size: 0.65rem;
-  font-family: "ui-sans-serif", system-ui, sans-serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--accent-text-color);
@@ -85,18 +85,22 @@ li.depth-3 {
 
 a {
   font-size: 0.75rem;
-  font-family: "ui-sans-serif", system-ui, sans-serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   color: var(--accent-text-color);
   line-height: 1.5;
   display: block;
-  opacity: 0.7;
-  transition: color 0.15s ease, opacity 0.15s ease;
+  transition: color 0.15s ease;
 }
 
-a:hover,
-li.active > a {
+a:hover {
   color: var(--link-color-hover);
-  opacity: 1;
+}
+
+li.active > a {
+  color: var(--link-color);
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--link-color);
+  margin-left: -0.5rem;
 }
 
 @media (max-width: 1200px) {
