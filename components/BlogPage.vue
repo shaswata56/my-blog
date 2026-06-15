@@ -56,12 +56,25 @@ const formatDate = (date) => {
 };
 
 const getExcerpt = (body) => {
-  if (!body || body.type !== 'minimal' || !Array.isArray(body.value)) return '';
+  if (!body || !Array.isArray(body.value)) return '';
+
+  const extractText = (node) => {
+    if (typeof node === 'string') return node;
+    if (Array.isArray(node)) {
+      return node
+        .slice(2)
+        .map(extractText)
+        .join('');
+    }
+    return '';
+  };
 
   const paragraphs = body.value
-    .filter((node) => node[0] === 'p' && typeof node[2] === 'string')
-    .map((node) => node[2])
-    .join(' ');
+    .filter((node) => Array.isArray(node) && node[0] === 'p')
+    .map(extractText)
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 
   const excerpt = paragraphs.length > 300 ? paragraphs.slice(0, 300) + '...' : paragraphs;
   return excerpt;
