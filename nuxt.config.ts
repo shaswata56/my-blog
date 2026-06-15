@@ -31,6 +31,9 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxt/content'],
   content: {
+    experimental: {
+      nativeSqlite: true
+    },
     highlight: {
       theme: {
         default: 'github-dark'
