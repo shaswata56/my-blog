@@ -18,6 +18,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "@nuxt/content": "^3.14.0",
+    "h3": "^1.15.11",
     "nuxt": "^4.4.8",
     "prismjs": "^1.30.0",
     "vue": "latest",
@@ -28,5 +29,8 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15"
+  },
+  "overrides": {
+    "h3": "^1.15.11"
   }
 }
