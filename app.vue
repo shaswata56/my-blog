@@ -31,7 +31,7 @@ useHead({
     {
       rel: "icon",
       type: "image/icon",
-      href: "/favicon.ico",
+      href: "/favicon.ico?v=2",
     },
     {
       rel: "alternate",
