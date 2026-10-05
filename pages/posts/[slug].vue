@@ -23,7 +23,7 @@ useSeoMeta({
     ogDescription: (post.value?.description as string | undefined) ?? "Blog of Shaswata Das.",
     ogUrl: postUrl,
     ogType: 'article',
-    ogImage: 'https://blog.shaswata.me/profile_picture.jpg',
+    ogImage: 'https://blog.shaswata.me/profile_picture.jpg?v=2',
     twitterCard: 'summary',
     twitterTitle: post.value?.title ?? 'Post Not Found',
     twitterDescription: (post.value?.description as string | undefined) ?? "Blog of Shaswata Das.",

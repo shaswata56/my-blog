@@ -54,12 +54,12 @@ useSeoMeta({
     "Blog of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
   ogDescription:
     "Blog of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
-  ogImage: "https://blog.shaswata.me/profile_picture.jpg",
+  ogImage: "https://blog.shaswata.me/profile_picture.jpg?v=2",
   ogUrl: "blog.shaswata.me",
   twitterCard: "summary_large_image",
   twitterTitle: "Shaswata's Blog'",
   twitterDescription: "Blog of Shaswata Das",
-  twitterImage: "https://blog.shaswata.me/profile_picture.jpg",
+  twitterImage: "https://blog.shaswata.me/profile_picture.jpg?v=2",
 });
 </script>
 
