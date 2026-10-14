@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <NuxtLoadingIndicator />
     <ScrollProgress />
     <Theme />
     <div class="content-wrapper">
