@@ -1,3 +1,6 @@
+const escapeXml = (value: string) =>
+  value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
 export default defineEventHandler(async (event) => {
   setHeader(event, 'Content-Type', 'application/xml; charset=utf-8')
 
@@ -9,7 +12,7 @@ export default defineEventHandler(async (event) => {
     .all()
 
   const urls = posts.map((post) => {
-    const loc = `${siteUrl}/posts${post.path}`
+    const loc = escapeXml(`${siteUrl}/posts${post.path}`)
     const lastmod = post.date ? new Date(post.date).toISOString().split('T')[0] : ''
     return `
   <url>

@@ -23,6 +23,10 @@ useHead({
       content:
         "Blog of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
     },
+    {
+      "http-equiv": "Content-Security-Policy",
+      content: "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self';",
+    },
   ],
   htmlAttrs: {
     lang: "en",
@@ -38,12 +42,6 @@ useHead({
       type: "application/rss+xml",
       title: "Shaswata's Blog RSS Feed",
       href: "/feed.xml",
-    },
-  ],
-  meta: [
-    {
-      "http-equiv": "Content-Security-Policy",
-      content: "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' ws: wss: https://api.netlify.com https://api.github.com;",
     },
   ],
 });
