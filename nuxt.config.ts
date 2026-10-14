@@ -26,9 +26,6 @@ export default defineNuxtConfig({
   build: {
     transpile: ['@fortawesome/vue-fontawesome']
   },  
-  experimental: {
-    payloadExtraction: false
-  },
   modules: ['@nuxt/content'],
   content: {
     experimental: {
