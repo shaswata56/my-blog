@@ -18,7 +18,7 @@ const COOKIE_KEY = 'theme-btn-pos';
 
 function savePosTocookie(x, y) {
   const val = encodeURIComponent(JSON.stringify({ x, y }));
-  document.cookie = `${COOKIE_KEY}=${val};path=/;max-age=31536000`;
+  document.cookie = `${COOKIE_KEY}=${val};path=/;max-age=31536000;Secure;SameSite=Lax`;
 }
 
 function loadPosFromCookie() {

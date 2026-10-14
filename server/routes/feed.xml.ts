@@ -1,3 +1,9 @@
+const escapeXml = (value: string) =>
+  value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+const cdata = (value: string) =>
+  `<![CDATA[${value.replace(/\]\]>/g, ']]]]><![CDATA[>')}]]>`
+
 export default defineEventHandler(async (event) => {
   setHeader(event, 'Content-Type', 'application/rss+xml; charset=utf-8')
 
@@ -10,15 +16,15 @@ export default defineEventHandler(async (event) => {
     .all()
 
   const items = posts.map((post) => {
-    const postUrl = `${siteUrl}/posts${post.path}`
+    const postUrl = escapeXml(`${siteUrl}/posts${post.path}`)
     const pubDate = post.date ? new Date(post.date).toUTCString() : buildDate
     return `
     <item>
-      <title><![CDATA[${post.title ?? ''}]]></title>
+      <title>${cdata(post.title ?? '')}</title>
       <link>${postUrl}</link>
       <guid isPermaLink="true">${postUrl}</guid>
       <pubDate>${pubDate}</pubDate>
-      <description><![CDATA[${(post as { description?: string }).description ?? ''}]]></description>
+      <description>${cdata((post as { description?: string }).description ?? '')}</description>
     </item>`
   }).join('')
 

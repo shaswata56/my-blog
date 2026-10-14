@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ['/'],
+      routes: ['/', '/feed.xml', '/sitemap.xml'],
     },
   },
   compatibilityDate: '2024-11-01',
