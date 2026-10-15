@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-const heartSrc = '/RedHeart.png'
+const heartSrc = '/RedHeart.webp'
 </script>
 
 <style scoped>
