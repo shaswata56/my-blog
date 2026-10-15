@@ -22,7 +22,7 @@ useHead({
     {
       name: "description",
       content:
-        "Blog of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
+        "Blog of Shaswata Das. Software Engineer, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
     },
     {
       "http-equiv": "Content-Security-Policy",
@@ -50,13 +50,13 @@ useSeoMeta({
   title: "Shaswata's Blog",
   ogTitle: "Shaswata's Blog",
   description:
-    "Blog of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
+    "Blog of Shaswata Das. Software Engineer, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
   ogDescription:
-    "Blog of Shaswata Das. Software Enginner, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
+    "Blog of Shaswata Das. Software Engineer, Developer, Hacker. Currently Software Engineer at Orbitax. B.Eng from Shahjalal University of Science and Technology, Sylhet, Bangladesh.",
   ogImage: "https://blog.shaswata.me/profile_picture.jpg?v=2",
-  ogUrl: "blog.shaswata.me",
+  ogUrl: "https://blog.shaswata.me",
   twitterCard: "summary_large_image",
-  twitterTitle: "Shaswata's Blog'",
+  twitterTitle: "Shaswata's Blog",
   twitterDescription: "Blog of Shaswata Das",
   twitterImage: "https://blog.shaswata.me/profile_picture.jpg?v=2",
 });
@@ -68,9 +68,6 @@ useSeoMeta({
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap');
 @import url("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css");
-
-@import 'prismjs/themes/prism.css';
-@import 'prismjs/themes/prism-okaidia.css';
 
 
 :root {

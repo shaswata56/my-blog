@@ -10,7 +10,7 @@
       >
         <b>Shaswata Das</b>
       </a>
-      with Nuxt 3 and
+      with Nuxt 4 and
       <img :src="heartSrc" alt="heart" class="heart" width="20" height="20" />
     </div>
   </footer>
