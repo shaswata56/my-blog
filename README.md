@@ -1,75 +1,31 @@
-# Nuxt Minimal Starter
+# Shaswata's Blog
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Personal blog of Shaswata Das, live at <https://blog.shaswata.me>.
 
-## Setup
+## Stack
 
-Make sure to install dependencies:
+- [Nuxt 4](https://nuxt.com) (SSR, statically generated)
+- [@nuxt/content 3](https://content.nuxt.com) — file-based markdown content, Shiki syntax highlighting (`github-dark`)
+- Tailwind CSS
+- Deployed to GitHub Pages via GitHub Actions (`.github/workflows/nuxtjs.yml`)
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Commands
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+npm install        # install dependencies
+npm run dev        # dev server on http://localhost:3000
+npm run generate   # static build into .output/public (what CI deploys)
+npm run build      # production build
+npm run preview    # preview the production build
+npm run lint       # eslint
 ```
 
-## Production
+## Content
 
-Build the application for production:
+Posts are markdown files in `content/` (`YYYY-MM-DD-slug.md`), routed to `/posts/:slug` via `content.config.ts`. Frontmatter supports `title`, `date`, `published`, `description`, and `tags`.
 
-```bash
-# npm
-npm run build
+Posts can also be edited through [Sveltia CMS](https://github.com/sveltia/sveltia-cms) at `/admin` (config in `public/admin/`).
 
-# pnpm
-pnpm build
+## Feeds
 
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+`server/routes/feed.xml.ts` (RSS) and `server/routes/sitemap.xml.ts` are prerendered at build time and linked from `public/robots.txt`.
