@@ -44,8 +44,8 @@ useHead({
                     <span v-if="post.date">{{ new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' }) }}</span>
                     <span class="reading-time"> · {{ readingTime }} min read</span>
                 </p>
-                <div class="post-tags" v-if="(post as any).tags?.length">
-                    <span v-for="tag in (post as any).tags" :key="tag" class="tag">{{ tag }}</span>
+                <div class="post-tags" v-if="post.tags?.length">
+                    <span v-for="tag in post.tags" :key="tag" class="tag">{{ tag }}</span>
                 </div>
             </div>
         </section>

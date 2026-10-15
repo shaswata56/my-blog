@@ -2,6 +2,7 @@
 title: "The Oracle"
 date: 2025-07-14
 published: true
+description: The Oracle I have received so far — on primordial awareness, reality models, and the persistent hallucination we call the world.
 ---
 
 The Oracle I have received so far:

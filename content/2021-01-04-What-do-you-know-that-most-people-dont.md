@@ -2,6 +2,7 @@
 title: What do you know that most people don’t?
 date: 2021-01-04
 published: true
+description: On The Falling Man and the mysterious reason people jump to their death — just because you cannot see the fire, it doesn’t mean it’s not burning.
 ---
 
 The mysterious reason why people jump to their death. Why they commit suicide.

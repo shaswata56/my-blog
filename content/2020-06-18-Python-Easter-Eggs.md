@@ -2,6 +2,9 @@
 title: My favourite Python Easter Eggs
 date: 2020-06-18
 published: true
+description: A tour of my favourite Python easter eggs — from import __hello__ and the Zen of Python to antigravity and why braces will never come from the future.
+tags:
+  - python
 ---
 
 *   ### Builtin - hello world

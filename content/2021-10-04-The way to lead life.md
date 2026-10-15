@@ -2,6 +2,9 @@
 title: The way to lead a life
 date: 2021-10-04
 published: true
+description: Dokkōdō — the 21 timeless principles Miyamoto Musashi wrote a week before he died, the key to living a worthy life.
+tags:
+  - life
 ---
 
 ![Self Portrait by 宮本 武蔵](https://i0.wp.com/thehistorianshut.com/wp-content/uploads/2020/04/Self-portrait-of-Miyamoto-Musashi-c.-1584-%E2%80%93-13-June-1645-Public-Domain-via-Creative-Commons.jpg)

@@ -10,7 +10,8 @@ export default defineContentConfig({
                 title: z.string().optional(),
                 date: z.string().optional(),
                 published: z.boolean().optional(),
-                description: z.string().optional()
+                description: z.string().optional(),
+                tags: z.array(z.string()).optional().default([])
             }),
             path: '/posts/:slug' // 🔥 this makes post.path = /posts/slug
         })
