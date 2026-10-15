@@ -6,7 +6,7 @@ Personal blog of Shaswata Das, live at <https://blog.shaswata.me>.
 
 - [Nuxt 4](https://nuxt.com) (SSR, statically generated)
 - [@nuxt/content 3](https://content.nuxt.com) — file-based markdown content, Shiki syntax highlighting (`github-dark`)
-- Tailwind CSS
+- Tailwind CSS 4 (via `@tailwindcss/vite`, CSS-first config in `assets/css/main.css`)
 - Deployed to GitHub Pages via GitHub Actions (`.github/workflows/nuxtjs.yml`)
 
 ## Commands

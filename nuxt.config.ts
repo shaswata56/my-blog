@@ -1,5 +1,10 @@
+import tailwindcss from '@tailwindcss/vite'
+
 export default defineNuxtConfig({
   ssr: true,
+  vite: {
+    plugins: [tailwindcss()],
+  },
   app: {
     baseURL: '/',
     buildAssetsDir: 'nuxt-assets',
@@ -17,12 +22,6 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css',
         '@fortawesome/fontawesome-svg-core/styles.css'
   ],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
   build: {
     transpile: ['@fortawesome/vue-fontawesome']
   },  
