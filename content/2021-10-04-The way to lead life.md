@@ -7,7 +7,7 @@ tags:
   - life
 ---
 
-![Self Portrait by 宮本 武蔵](https://i0.wp.com/thehistorianshut.com/wp-content/uploads/2020/04/Self-portrait-of-Miyamoto-Musashi-c.-1584-%E2%80%93-13-June-1645-Public-Domain-via-Creative-Commons.jpg)
+![Self Portrait by 宮本 武蔵](/images/musashi-self-portrait.jpg)
 
 Miyamoto Musashi (宮本 武蔵) was a Japanese swordsman, philosopher, strategist, writer, artist and well-learned Buddhist. He was a rōnin (浪人), which means a samurai without a master.
 

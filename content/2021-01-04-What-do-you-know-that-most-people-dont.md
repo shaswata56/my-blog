@@ -11,7 +11,7 @@ Look at the famous picture below.
 
 You might have heard of it.
 
-![The Falling Man](https://i.imgur.com/AC7dhuH.jpeg)
+![The Falling Man](/images/falling-man.jpeg)
 
 **It’s called The Falling Man.**
 

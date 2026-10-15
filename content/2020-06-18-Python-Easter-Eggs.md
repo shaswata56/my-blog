@@ -115,7 +115,7 @@ The Zen showed it's paradox in the source. It's not beautiful but ugly, not expl
 ```py
 >>> import antigravity
 ```
-![Antigravity](https://imgs.xkcd.com/comics/python.png)
+![Antigravity](/images/xkcd-python.png)
 
 
 *   ### Never try to bring curly braces from future
